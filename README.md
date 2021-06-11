@@ -1,43 +1,43 @@
-** PROBLEM DEFINITION
+## PROBLEM DEFINITION
 
 To implement a classification algorithm to recognize handwritten digits (0‐ 9). This project presents our implementation of the Neural networks to recognize the handwritten numeral digits.
 Deployment of the trained model as a web app using flask.
 
-** MNIST AND MATH SYMBOL DATASETS
+## MNIST AND MATH SYMBOL DATASETS
 
 The MNIST dataset, a subset of a larger set NIST, is a database of 70,000 handwritten digits, divided into 60,000 training examples and 10,000 testing samples. The images in the MNIST dataset are present in form of an array consisting of 28x28 values representing an image along with their labels. Also, we have used dataset from math symbol containing 7000 samples each for ‘-’ and ‘+’, 3251 samples for ‘*’ and 868 samples for ‘/’. Merging of data resulted in 76307 samples for training and 11812 samples for testing dataset.
 
-** LIBRARY USED
+## LIBRARY USED
 
-Python 3 and above 
-TensorFlow library for training and inference of deep neural networks.
-Keras library for interface of TensorFlow library
-Flask framework to deploy model
+* Python 3 and above 
+* TensorFlow library for training and inference of deep neural networks.
+* Keras library for interface of TensorFlow library
+* Flask framework to deploy model
 
-** CNN MODEL SUMMARY
+## CNN MODEL SUMMARY
 
 ![image](https://user-images.githubusercontent.com/73153277/121680664-6ff46880-cad7-11eb-9e82-420e254dd0f9.png)
 
-** RESULTS
-** Training  and Validation Accuracy:
+## RESULTS
+### Training  and Validation Accuracy:
 
 ![image](https://user-images.githubusercontent.com/73153277/121680795-961a0880-cad7-11eb-9bc4-079b1d049cb4.png)
 
-** Testing Accuracy:
+### Testing Accuracy:
 
 ![image](https://user-images.githubusercontent.com/73153277/121680862-af22b980-cad7-11eb-951b-7dcb5b56e147.png)
 
-** Model Deployment using Flask Demo:
+## Model Deployment using Flask Demo:
 
 ![image](https://user-images.githubusercontent.com/73153277/121680954-cfeb0f00-cad7-11eb-8fe9-a6470cb23bb4.png)
 
-** PROBLEMS FACED AND LESSONS LEARNT
+## PROBLEMS FACED AND LESSONS LEARNT
 * Faced issue of overfitting and shuffled the dataset. 
 * Math dataset and MNIST dataset compatibility issue resolved by converting the math dataset samples to binary images.
 * Faced many issues related to Trained model deployment using Flask library, fixed the issues by referring multiple online sources and got exposure to flask functionalities.
 
 
-** REFERENCES
+## REFERENCES
 * https://www.mdpi.com/1424-8220/20/12/3344/htm
 * https://core.ac.uk/download/pdf/231148505.pdf
 * https://www.freecodecamp.org/news/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050/
