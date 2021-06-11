@@ -1,0 +1,113 @@
+<!-- https://stackoverflow.com/questions/22891827/how-do-i-hand-draw-on-canvas-with-javascript-->
+<!DOCTYPE html>
+<html>
+<head>
+   <title>HandWritten Digit Recognition Mini Project Web App</title>
+   <script type='text/javascript' src='static/js/paper.js'></script>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="static/css/bootstrap.min.css">
+   <script src="static/js/jquery.min.js"></script>
+   <script src="static/js/popper.min.js"></script>
+   <script src="static/js/bootstrap.min.js"></script>
+    <style type='text/css'>
+        #sheet {
+            border:1px solid black;
+            background-color: white;
+        }
+       
+        body {
+            background-color: #46344E;
+        }             
+           
+    </style>
+</head>
+<body>
+    <script type="text/paperscript" canvas="sheet">
+        var path;
+        var download = document.getElementById('download');
+        var clear = document.getElementById('clear');
+
+        function onMouseDown(event) {
+            // If we produced a path before, deselect it:
+            if (path) {
+                path.selected = false;
+            }
+
+            // Create a new path and set its stroke color to black:
+            path = new Path({
+                segments: [event.point],
+                strokeColor: 'red',
+                strokeWidth: 5
+            });
+        }
+
+        // While the user drags the mouse, points are added to the path
+        // at the position of the mouse:
+        function onMouseDrag(event) {
+            path.add(event.point);
+        }
+
+        // When the mouse is released, we simplify the path:
+        function onMouseUp(event) {
+            path.simplify();
+        }
+
+        predict.addEventListener('click', function(e) {
+            var link = document.createElement('a');
+            link.download = 'download.png';
+            link.href = sheet.toDataURL();
+
+            document.getElementById("predict").value = link.href;
+        });
+
+
+        clear.addEventListener('click', function(e) {
+            path.remove()
+        });
+
+    </script>
+
+    <div class="jumbotron text-center bg-dark text-white my-0 py-2">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-3">
+    <img src="static/image/download.jpeg", height=150px, width=250>
+    </div>
+    <div class="col-sm-6">
+    <h1>Handwritten Digit Recognition</h1>
+    <h6><I>&nbsp; By, <br> &nbsp;&nbsp; Ankit Kumar Pathak <br>&nbsp;&nbsp; Girish Kumar <br><br>&nbsp; Under the guidance of, <br> &nbsp;&nbsp; Asst Prof. Balaji B<I></h6>
+    </div>
+    <div class="col-sm-3">
+    <img src="static/image/msis.jpeg", height=150px, width=250>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="container-fluid ml-0 mr-0 py-5">
+     <div class="row ml-0 mr-0">
+     <div class="col-sm-6">
+
+    <canvas id="sheet" width="700" height="350" class="d-flex justify-content-center"></canvas>
+    <br>
+    <div  class="d-flex justify-content-center">
+    <button type="button" class="btn btn-danger" id="clear">Clear</button> &nbsp;
+    <form action = "http://localhost:5000/" method = "post" class="align-self-center d-inline">
+       <button class="btn btn-success d-inline" type = "submit" id = "predict" name = "btn" value = "Submit">Predict</button>
+    </form> 
+    </div>   
+    </div>
+    <div class="col-sm-6">
+      <div class="alert alert-warning" role="alert">
+           <p><strong>Predicted Output:  &nbsp; <span style="color:green">{{ outPut }}</strong></p><span>
+      </div>
+    <div class="d-flex justify-content-center">
+    <img src="{{url_for('static', filename = imagePath)}}", alt="There is no output available.. Please click on predict", width="610" height="275", style="color: red">
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
